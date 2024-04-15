@@ -3,13 +3,17 @@ import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import ProductDetailsModal from './ProductDetailsModal';
 
-interface Product {
+interface Product{
     ID_product: string;
     Product_name: string;
+    ID_Category: string;
     PriceSell: string;
     SizeEU: string;
     Image_URL: string;
+    Revenue: string;
+    Color: string;
     Quantity: string;
+
 }
 
 interface NewProductsProps {

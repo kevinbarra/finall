@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import NewProducts from '@/components/NewProducts';
 import HeaderMain from "@/components/HeaderMain";
 
-interface Product {
-  ID_product: string,
+interface Product{
+  ID_product: string;
   Product_name: string;
   ID_Category: string;
   PriceSell: string;
@@ -13,6 +13,7 @@ interface Product {
   Revenue: string;
   Color: string;
   Quantity: string;
+
 }
 
 const Home: React.FC = () => {

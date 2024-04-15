@@ -3,15 +3,18 @@ import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
 
-interface Product {
+interface Product{
     ID_product: string;
     Product_name: string;
+    ID_Category: string;
     PriceSell: string;
     SizeEU: string;
     Image_URL: string;
+    Revenue: string;
+    Color: string;
     Quantity: string;
-}
 
+}
 interface ProductCardProps {
     product: Product;
     onProductSelect: (product: Product) => void;
