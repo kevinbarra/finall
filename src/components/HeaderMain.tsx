@@ -44,7 +44,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
             <div className={"container flex justify-between items-center space-x-2"}>
                 <div className="flex flex-row items-center ">
                     <div>
-                        <img src="/images/luxaris.png" alt="logo luxaris" className={"w-16 md:w-32 lg:w-48"} />
+                        <img src="./images/luxaris.png" alt="logo luxaris" className={"w-16 md:w-32 lg:w-48"} />
                     </div>
                     <div>
                         <Menu as="div" className="relative inline-block text-left">
