@@ -29,11 +29,11 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
             return (
                 <div className="flex">
                     <div className="mr-8">
-                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400} />
+                        <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400} />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
-                        <p>Precio: {product.PriceSell.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} - Talla: {product.SizeEU}EU</p>
+                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
+                        <p>Precio: {product!.PriceSell.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} - Talla: {product!.SizeEU}EU</p>
                     </div>
                 </div>
             );
@@ -41,13 +41,13 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
             return (
                 <div className="flex">
                     <div className="mr-8">
-                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400}/>
+                        <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400}/>
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
+                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
                         <h3 className="text-2xl font-bold mb-4">AGOTADO</h3>
-                        <p>Precio: {product.PriceSell.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} -
-                            Talla: {product.SizeEU}EU</p>
+                        <p>Precio: {product!.PriceSell.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} -
+                            Talla: {product!.SizeEU}EU</p>
                     </div>
                 </div>
             );
@@ -58,7 +58,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
         <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="min-h-screen flex items-center justify-center">
                 <div className="bg-white p-5 rounded shadow-lg w-full max-w-xl m-8">
-                    {(parseInt(product.Quantity))}
+                    {stock(parseInt(product.Quantity))}
                     <button onClick={onClose} className="mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
                         Cerrar
                     </button>
