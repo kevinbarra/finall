@@ -53,7 +53,7 @@ const Home: React.FC = () => {
   };
 
   return (
-      <main className="flex min-h-screen flex-col items-center max-w-[100%] justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center max-w-[100%] justify-between p-2">
         <HeaderMain onCategorySelect={handleCategorySelect} />
         <input
             className="border-gray-200 border p-2 px-4 rounded-lg w-full mb-4"
