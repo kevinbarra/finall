@@ -52,7 +52,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <div>
                 <Image className="w-[3500px] h-[250px]" src={product.Image_URL} alt={product.Product_name} width={200} height={300} />
             </div>
-            {stock(product.Quantity)}
+            {stock(parseInt(product.Quantity))}
         </div>
     );
 }
