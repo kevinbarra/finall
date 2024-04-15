@@ -96,7 +96,9 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
 
 
                 <div className="lg:flex gap-4 text-gray-500 text-[30px] ">
-                    <BsInstagram />
+                <a href="https://www.instagram.com/_luxaris_?igsh=MTdodGhrYWc3djcxcA%3D%3D">
+                        <BsInstagram />
+                    </a>
                 </div>
 
             </div>
