@@ -33,7 +33,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
                     </div>
                     <div>
                         <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
-                        <p>Precio: {product!.PriceSell.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} - Talla: {product!.SizeEU}EU</p>
+                        <p>Talla: {product!.SizeEU}EU</p>
                     </div>
                 </div>
             );
@@ -46,8 +46,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
                     <div>
                         <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
                         <h3 className="text-2xl font-bold mb-4">AGOTADO</h3>
-                        <p>Precio: {product!.PriceSell.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} -
-                            Talla: {product!.SizeEU}EU</p>
+                        <p>Talla: {product!.SizeEU}EU</p>
                     </div>
                 </div>
             );

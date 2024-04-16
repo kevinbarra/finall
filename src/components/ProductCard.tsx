@@ -33,8 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             return (
                 <div className="space-y-2 py-2">
                     <h2 className="text-blackish font-medium truncate">{product!.Product_name}</h2>
-                    <p className="text-xs sm:text-base"> Precio: {product!.PriceSell.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} -
-                        Talla: {product!.SizeEU}EU </p>
+                    <p className="text-xs sm:text-base">Talla: {product!.SizeEU}EU </p>
                 </div>
             );
         } else {
