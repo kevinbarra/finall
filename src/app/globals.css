@@ -57,6 +57,10 @@
         @apply flex justify-between items-center py-4 border-b border-gray-200 bg-white;
     }
 
+    .header-container {
+        @apply container mx-auto flex justify-between items-center space-x-4 px-4;
+    }
+
     .header-logo {
         @apply w-48;
     }
@@ -70,7 +74,7 @@
     }
 
     .header-instagram {
-        @apply flex gap-4 text-gray-500 text-2xl;
+        @apply flex gap-4 text-gray-500 text-3xl;
     }
 
     .header-instagram a {
