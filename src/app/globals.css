@@ -28,7 +28,7 @@
     .navbar__link:hover::after {
         scale: 1;
     }
-    
+
     .search_input {
         @apply border-gray-300 border p-3 px-4 rounded-lg w-full mb-4 shadow-md focus:outline-none focus:border-gray-400;
     }
@@ -51,5 +51,29 @@
 
     .modal_close_btn {
         @apply mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition duration-200;
+    }
+
+    .header {
+        @apply flex justify-between items-center py-4 border-b border-gray-200 bg-white;
+    }
+
+    .header-logo {
+        @apply w-48;
+    }
+
+    .header-categories {
+        @apply flex items-center space-x-4;
+    }
+
+    .header-category-button {
+        @apply inline-flex justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-200 transition duration-200;
+    }
+
+    .header-instagram {
+        @apply flex gap-4 text-gray-500 text-2xl;
+    }
+
+    .header-instagram a {
+        @apply hover:text-gray-700 transition duration-200;
     }
 }
