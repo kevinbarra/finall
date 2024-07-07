@@ -13,7 +13,6 @@ interface Product{
   Revenue: string;
   Color: string;
   Quantity: string;
-
 }
 
 const Home: React.FC = () => {
