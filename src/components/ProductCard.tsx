@@ -1,9 +1,8 @@
 // ProductCard.tsx
 import React from "react";
 import Image from "next/image";
-import Link from 'next/link';
 
-interface Product{
+interface Product {
     ID_product: string;
     Product_name: string;
     ID_Category: string;
@@ -13,8 +12,8 @@ interface Product{
     Revenue: string;
     Color: string;
     Quantity: string;
-
 }
+
 interface ProductCardProps {
     product: Product;
     onProductSelect: (product: Product) => void;
@@ -32,27 +31,28 @@ const ProductCard: React.FC<ProductCardProps> = ({
         if (stock > 0) {
             return (
                 <div className="space-y-2 py-2">
-                    <h2 className="text-blackish font-medium truncate">{product!.Product_name}</h2>
-                    <p className="text-xs sm:text-base">Talla: {product!.SizeEU}EU </p>
+                    <h2 className="text-lg font-medium truncate text-gray-800">{product.Product_name}</h2>
+                    <p className="text-sm sm:text-base text-gray-600">Talla: {product.SizeEU}EU</p>
+                    <p className="text-sm sm:text-base text-green-600 font-semibold">En stock</p>
                 </div>
             );
         } else {
             return (
                 <div className="space-y-2 py-2">
-                    <h2 className="text-blackish font-medium truncate">{product!.Product_name}</h2>
-                    <p className="text-xs sm:text-base"> AGOTADO </p>
+                    <h2 className="text-lg font-medium truncate text-gray-800">{product.Product_name}</h2>
+                    <p className="text-sm sm:text-base text-red-600 font-semibold">Agotado</p>
                 </div>
             );
         }
     }
 
     return (
-        <div onClick={handleClick} className="px-2 sm:px-4 border border-gray-200 rounded-xl max-w-full cursor-pointer">
-            <div>
-                <Image className="w-[350px] h-[250px]" src={product.Image_URL} alt={product.Product_name} layout="responsive" width={350} height={250} />
-
+        <div onClick={handleClick} className="product-card max-w-full cursor-pointer">
+            <Image className="rounded-t-lg" src={product.Image_URL} alt={product.Product_name} layout="responsive" width={350} height={250} />
+            <div className="product-card-content">
+                {stock(parseInt(product.Quantity))}
+                <p className="product-card-price">{product.PriceSell} €</p>
             </div>
-            {stock(parseInt(product.Quantity))}
         </div>
     );
 }
