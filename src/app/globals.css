@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components  {
-    .header_top_icon_wrapper{
+@layer components {
+    .header_top_icon_wrapper {
         @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-accent hover:text-white;
     }
 
-    .navbar__link:hover{
+    .navbar__link:hover {
         color: #d6b435;
         transition: all 0.4s;
     }
 
-    .navbar__link::after{
+    .navbar__link::after {
         position: absolute;
         content: "";
         background-color: #d6b435;
@@ -23,10 +23,57 @@
         scale: 0;
         transform-origin: left;
         transition: all 0.4s;
-
     }
 
-    .navbar__link:hover::after{
+    .navbar__link:hover::after {
         scale: 1;
+    }
+
+    .product-card {
+        @apply border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+    }
+
+    .product-card img {
+        @apply rounded-t-lg;
+    }
+
+    .product-card-content {
+        @apply p-4;
+    }
+
+    .product-card-title {
+        @apply text-lg font-semibold text-gray-800;
+    }
+
+    .product-card-price {
+        @apply text-xl font-bold text-gray-900;
+    }
+
+    .product-card-out-of-stock {
+        @apply text-red-500 font-semibold;
+    }
+
+    .product-card-in-stock {
+        @apply text-green-500 font-semibold;
+    }
+
+    .modal-overlay {
+        @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center;
+    }
+
+    .modal-content {
+        @apply bg-white p-6 rounded-lg shadow-lg;
+    }
+
+    .modal-header {
+        @apply text-2xl font-bold mb-4;
+    }
+
+    .modal-body {
+        @apply flex flex-col gap-4;
+    }
+
+    .modal-close-button {
+        @apply mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300;
     }
 }
