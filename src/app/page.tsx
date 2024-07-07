@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import NewProducts from '@/components/NewProducts';
 import HeaderMain from "@/components/HeaderMain";
 
-interface Product{
+interface Product {
   ID_product: string;
   Product_name: string;
   ID_Category: string;
@@ -13,7 +13,6 @@ interface Product{
   Revenue: string;
   Color: string;
   Quantity: string;
-
 }
 
 const Home: React.FC = () => {
@@ -39,8 +38,8 @@ const Home: React.FC = () => {
   }, []);
 
   const filteredProducts = products.filter(product =>
-      (currentCategory === 'ALL' || product.ID_Category === currentCategory) &&
-      product.Product_name.toLowerCase().includes(searchTerm.toLowerCase())
+    (currentCategory === 'ALL' || product.ID_Category === currentCategory) &&
+    product.Product_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleCategorySelect = (categoryId: string, catName: string) => {
@@ -53,17 +52,17 @@ const Home: React.FC = () => {
   };
 
   return (
-      <main className="flex min-h-screen flex-col items-center max-w-[100%] justify-between p-2">
-        <HeaderMain onCategorySelect={handleCategorySelect} />
-        <input
-            className="border-gray-200 border p-2 px-4 rounded-lg w-full mb-4"
-            type="text"
-            placeholder="Buscar..."
-            value={searchTerm}
-            onChange={handleSearchChange}
-        />
-        <NewProducts products={filteredProducts} category={currentCategoryName} />
-      </main>
+    <main className="flex min-h-screen flex-col items-center max-w-[100%] justify-between p-4 bg-white">
+      <HeaderMain onCategorySelect={handleCategorySelect} />
+      <input
+        className="border-gray-300 border p-2 px-4 rounded-lg w-full mb-4 shadow-sm"
+        type="text"
+        placeholder="Buscar..."
+        value={searchTerm}
+        onChange={handleSearchChange}
+      />
+      <NewProducts products={filteredProducts} category={currentCategoryName} />
+    </main>
   );
 }
 
