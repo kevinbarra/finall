@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { BsInstagram } from "react-icons/bs";
+import { BsSearch, BsInstagram } from "react-icons/bs";
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -34,19 +34,18 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
             }
         };
 
-
         loadBrands();
     }, []);
 
     return (
-        <div className="border-b border-gray-300 py-4">
-            <div className="container mx-auto flex justify-between items-center space-x-4">
+        <div className="border-b border-gray-200 py-4">
+            <div className="container flex justify-between items-center space-x-4">
                 <div className="flex items-center space-x-4">
-                    <img src="./images/luxaris.png" alt="logo luxaris" className="w-20 md:w-36 lg:w-48" />
+                    <img src="./images/luxaris.png" alt="logo luxaris" className="w-16 md:w-32 lg:w-48" />
                     <Menu as="div" className="relative inline-block text-left">
-                        <Menu.Button className="inline-flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                            Categorias
-                            <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5 text-gray-500" aria-hidden="true" />
+                        <Menu.Button className="inline-flex justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            Categorías
+                            <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                         </Menu.Button>
                         <Transition
                             as={Fragment}
@@ -56,14 +55,14 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
                             leave="transition ease-in duration-75"
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95">
-                            <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                <Menu.Item>
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                <Menu.Item >
                                     {({ active }) => (
                                         <button
                                             onClick={() => onCategorySelect("ALL", "ALL")}
                                             className={classNames(
                                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                'block px-4 py-2 text-sm w-full text-left'
+                                                'block px-4 py-2 text-sm'
                                             )}>
                                             ALL
                                         </button>
@@ -76,7 +75,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
                                                 onClick={() => onCategorySelect(category.ID_Category, category.name)}
                                                 className={classNames(
                                                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                    'block px-4 py-2 text-sm w-full text-left'
+                                                    'block px-4 py-2 text-sm'
                                                 )}>
                                                 {category.name}
                                             </button>
@@ -87,12 +86,13 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
                         </Transition>
                     </Menu>
                 </div>
-                <a href="https://www.instagram.com/_luxaris_?igsh=MTdodGhrYWc3djcxcA%3D%3D" className="text-gray-500 text-2xl">
-                    <BsInstagram />
-                </a>
+                <div className="flex gap-4 text-gray-500 text-2xl">
+                    <a href="https://www.instagram.com/_luxaris_" className="hover:text-gray-700">
+                        <BsInstagram />
+                    </a>
+                </div>
             </div>
         </div>
     )
 };
 export default HeaderMain;
-
