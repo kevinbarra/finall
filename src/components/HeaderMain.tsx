@@ -42,7 +42,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
 
     return (
         <div className="header">
-            <div className="container flex justify-between items-center space-x-4">
+            <div className="header-container">
                 <Image src="/images/luxaris.png" alt="logo luxaris" width={192} height={48} className="header-logo" />
                 <div className="header-categories">
                     <Menu as="div" className="relative inline-block text-left">
