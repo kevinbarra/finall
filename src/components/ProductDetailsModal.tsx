@@ -13,6 +13,7 @@ interface Product {
     Color: string;
     Quantity: string;
 }
+
 interface ProductDetailsModalProps {
     product: Product | null;
     onClose: () => void;
@@ -22,32 +23,22 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onCl
     if (!product) return null;
 
     function stock(stock: number) {
-        if (stock > 0) {
-            return (
-                <div className="flex">
-                    <div className="mr-8">
-                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400} />
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
-                        <p>Talla: {product.SizeEU}EU</p>
-                    </div>
+        return (
+            <div className="flex">
+                <div className="mr-8">
+                    <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400} />
                 </div>
-            );
-        } else {
-            return (
-                <div className="flex">
-                    <div className="mr-8">
-                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400}/>
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
+                <div>
+                    <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
+                    <p>Talla: {product.SizeEU}EU</p>
+                    {stock > 0 ? (
+                        <p className="text-gray-900 text-xl font-semibold">{product.PriceSell} €</p>
+                    ) : (
                         <h3 className="text-2xl font-bold mb-4">AGOTADO</h3>
-                        <p>Talla: {product.SizeEU}EU</p>
-                    </div>
+                    )}
                 </div>
-            );
-        }
+            </div>
+        );
     }
 
     return (
