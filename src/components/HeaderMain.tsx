@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { BsSearch, BsInstagram } from "react-icons/bs";
+import Image from 'next/image';
+import { BsInstagram } from "react-icons/bs";
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -41,7 +42,9 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
         <div className="border-b border-gray-200 py-4">
             <div className="container flex justify-between items-center space-x-4">
                 <div className="flex items-center space-x-4">
-                    <img src="./images/luxaris.png" alt="logo luxaris" className="w-16 md:w-32 lg:w-48" />
+                    <div>
+                        <Image src="/images/luxaris.png" alt="logo luxaris" width={192} height={48} />
+                    </div>
                     <Menu as="div" className="relative inline-block text-left">
                         <Menu.Button className="inline-flex justify-center rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                             Categorías
