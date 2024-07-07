@@ -63,4 +63,3 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onCl
 };
 
 export default ProductDetailsModal;
-
