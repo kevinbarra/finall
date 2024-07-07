@@ -22,9 +22,11 @@ interface ProductDetailsModalProps {
 const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onClose }) => {
     if (!product) return null;
 
-    const stock = (stock: number) => {
-        if (product) {
-            return (
+    const isInStock = parseInt(product.Quantity) > 0;
+
+    return (
+        <div className="modal">
+            <div className="modal_content">
                 <div className="flex">
                     <div className="mr-8">
                         <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400} />
@@ -32,22 +34,13 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onCl
                     <div>
                         <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
                         <p>Talla: {product.SizeEU}EU</p>
-                        {stock > 0 ? (
+                        {isInStock ? (
                             <p className="text-gray-900 text-xl font-semibold">{product.PriceSell} €</p>
                         ) : (
                             <h3 className="text-2xl font-bold mb-4">AGOTADO</h3>
                         )}
                     </div>
                 </div>
-            );
-        }
-        return null;
-    }
-
-    return (
-        <div className="modal">
-            <div className="modal_content">
-                {stock(parseInt(product.Quantity))}
                 <button onClick={onClose} className="modal_close_btn">
                     Cerrar
                 </button>
