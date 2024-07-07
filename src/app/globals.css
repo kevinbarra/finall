@@ -4,7 +4,7 @@
 
 @layer components {
     .header_top_icon_wrapper {
-        @apply bg-gray-200 rounded-md p-[6px] text-[14px] cursor-pointer hover:bg-accent hover:text-white;
+        @apply bg-gray-200 rounded-md p-[8px] text-[14px] cursor-pointer hover:bg-accent hover:text-white transition duration-300;
     }
 
     .navbar__link:hover {
@@ -28,52 +28,28 @@
     .navbar__link:hover::after {
         scale: 1;
     }
-
-    .product-card {
-        @apply border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+    
+    .search_input {
+        @apply border-gray-300 border p-3 px-4 rounded-lg w-full mb-4 shadow-md focus:outline-none focus:border-gray-400;
     }
 
-    .product-card img {
-        @apply rounded-t-lg;
+    .product_card {
+        @apply px-4 border border-gray-200 rounded-xl max-w-full cursor-pointer hover:shadow-lg transition duration-300;
     }
 
-    .product-card-content {
-        @apply p-4;
+    .product_card img {
+        @apply w-full h-auto rounded-t-xl;
     }
 
-    .product-card-title {
-        @apply text-lg font-semibold text-gray-800;
+    .modal {
+        @apply fixed inset-0 z-10 overflow-y-auto flex items-center justify-center;
     }
 
-    .product-card-price {
-        @apply text-xl font-bold text-gray-900;
+    .modal_content {
+        @apply bg-white p-6 rounded shadow-lg w-full max-w-xl m-8 relative;
     }
 
-    .product-card-out-of-stock {
-        @apply text-red-500 font-semibold;
-    }
-
-    .product-card-in-stock {
-        @apply text-green-500 font-semibold;
-    }
-
-    .modal-overlay {
-        @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center;
-    }
-
-    .modal-content {
-        @apply bg-white p-6 rounded-lg shadow-lg;
-    }
-
-    .modal-header {
-        @apply text-2xl font-bold mb-4;
-    }
-
-    .modal-body {
-        @apply flex flex-col gap-4;
-    }
-
-    .modal-close-button {
-        @apply mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300;
+    .modal_close_btn {
+        @apply mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition duration-200;
     }
 }
