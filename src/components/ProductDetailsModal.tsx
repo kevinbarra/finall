@@ -13,7 +13,6 @@ interface Product {
     Color: string;
     Quantity: string;
 }
-
 interface ProductDetailsModalProps {
     product: Product | null;
     onClose: () => void;
@@ -25,32 +24,39 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onCl
     function stock(stock: number) {
         if (stock > 0) {
             return (
-                <div className="modal-body">
-                    <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400} className="rounded-lg" />
-                    <h2 className="modal-header">{product!.Product_name}</h2>
-                    <p className="text-gray-700">Talla: {product!.SizeEU}EU</p>
-                    <p className="text-gray-900 text-xl font-semibold">{product!.PriceSell} €</p>
-                    <p className="text-green-600 font-semibold">En stock</p>
+                <div className="flex">
+                    <div className="mr-8">
+                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400} />
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
+                        <p>Talla: {product.SizeEU}EU</p>
+                    </div>
                 </div>
             );
         } else {
             return (
-                <div className="modal-body">
-                    <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400} className="rounded-lg" />
-                    <h2 className="modal-header">{product!.Product_name}</h2>
-                    <p className="text-gray-700">Talla: {product!.SizeEU}EU</p>
-                    <p className="text-gray-900 text-xl font-semibold">{product!.PriceSell} €</p>
-                    <p className="text-red-600 font-semibold">Agotado</p>
+                <div className="flex">
+                    <div className="mr-8">
+                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400}/>
+                    </div>
+                    <div>
+                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
+                        <h3 className="text-2xl font-bold mb-4">AGOTADO</h3>
+                        <p>Talla: {product.SizeEU}EU</p>
+                    </div>
                 </div>
             );
         }
     }
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                {stock(parseInt(product!.Quantity))}
-                <button onClick={onClose} className="modal-close-button">Cerrar</button>
+        <div className="modal">
+            <div className="modal_content">
+                {stock(parseInt(product.Quantity))}
+                <button onClick={onClose} className="modal_close_btn">
+                    Cerrar
+                </button>
             </div>
         </div>
     );
