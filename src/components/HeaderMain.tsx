@@ -104,3 +104,4 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
 };
 
 export default HeaderMain;
+
