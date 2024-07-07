@@ -82,7 +82,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
                                                 )}>
                                                 {category.name}
                                             </button>
-                                        )}
+                                        ))}
                                     </Menu.Item>
                                 ))}
                             </Menu.Items>
