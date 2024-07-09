@@ -19,7 +19,7 @@ interface ProductDetailsModalProps {
     onClose: () => void;
 }
 
-const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClose}) => {
+const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onClose }) => {
     if (!product) return null;
 
     function stock(stock: number) {
