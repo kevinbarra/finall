@@ -43,7 +43,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
                         <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400} className="rounded-md" />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
+                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h3>
                         <h3 className="text-xl font-bold text-red-500 mb-4">AGOTADO</h3>
                         <p className="mb-2">Talla: {product!.SizeEU}EU</p>
                     </div>
@@ -53,14 +53,12 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
     }
 
     return (
-        <div className="fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50">
-            <div className="min-h-screen flex items-center justify-center px-4">
-                <div className="bg-white p-6 rounded-md shadow-lg w-full max-w-2xl">
-                    {stock(parseInt(product.Quantity))}
-                    <button onClick={onClose} className="mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition-colors">
-                        Cerrar
-                    </button>
-                </div>
+        <div className="modal">
+            <div className="modal_content">
+                {stock(parseInt(product.Quantity))}
+                <button onClick={onClose} className="modal_close">
+                    Cerrar
+                </button>
             </div>
         </div>
     );
