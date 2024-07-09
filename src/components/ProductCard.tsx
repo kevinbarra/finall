@@ -1,5 +1,5 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
 interface Product {
     ID_product: string;
@@ -18,26 +18,23 @@ interface ProductCardProps {
     onProductSelect: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
-    product,
-    onProductSelect
-}) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onProductSelect }) => {
     const handleClick = () => {
         onProductSelect(product);
     };
 
-    function stock(stock: number) {
-        if (stock > 0) {
+    const stock = (quantity: number) => {
+        if (quantity > 0) {
             return (
                 <div className="space-y-2 py-2">
-                    <h2 className="product_title">{product!.Product_name}</h2>
-                    <p className="text-xs sm:text-base">Talla: {product!.SizeEU}EU </p>
+                    <h2 className="product_title">{product.Product_name}</h2>
+                    <p className="text-xs sm:text-base">Talla: {product.SizeEU}EU </p>
                 </div>
             );
         } else {
             return (
                 <div className="space-y-2 py-2">
-                    <h2 className="product_title">{product!.Product_name}</h2>
+                    <h2 className="product_title">{product.Product_name}</h2>
                     <p className="text-xs sm:text-base product_sold_out">AGOTADO</p>
                 </div>
             );
