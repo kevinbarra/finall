@@ -53,4 +53,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductSelect }) =
     );
 }
 
-export default ProductCard
+export default ProductCard;
