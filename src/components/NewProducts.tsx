@@ -1,4 +1,3 @@
-// NewProducts.tsx
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 import ProductDetailsModal from './ProductDetailsModal';
@@ -13,7 +12,6 @@ interface Product {
     Revenue: string;
     Color: string;
     Quantity: string;
-
 }
 
 interface NewProductsProps {
