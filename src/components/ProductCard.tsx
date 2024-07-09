@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 interface Product {
     ID_product: string;
@@ -20,7 +20,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({
     product,
-    onProductSelect,
+    onProductSelect
 }) => {
     const handleClick = () => {
         onProductSelect(product);
@@ -54,6 +54,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </div>
         </div>
     );
-};
+}
 
 export default ProductCard;
