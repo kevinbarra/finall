@@ -13,7 +13,6 @@ function classNames(...classes: string[]) {
 
 interface HeaderMainProps {
     onCategorySelect: (categoryId: string, catName: string) => void;
-    onSearchChange: (searchTerm: string) => void;
 }
 
 interface Category {
@@ -21,7 +20,7 @@ interface Category {
     name: string;
 }
 
-const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect, onSearchChange }) => {
+const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
     const [categories, setCategories] = useState<Category[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -46,7 +45,6 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect, onSearchChang
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setSearchTerm(value);
-        onSearchChange(value);
 
         // Simular sugerencias basadas en el término de búsqueda
         const exampleSuggestions = ['Versace', 'Nike', 'Adidas', 'Puma'];
@@ -57,7 +55,6 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect, onSearchChang
 
     const handleSuggestionClick = (suggestion: string) => {
         setSearchTerm(suggestion);
-        onSearchChange(suggestion);
         setSuggestions([]);
     };
 
@@ -111,20 +108,20 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect, onSearchChang
             <div className="header__logo">
                 <Image src="/images/luxaris.png" alt="logo luxaris" width={192} height={48} />
             </div>
-            <div className="header__search">
+            <div className="header__search relative">
                 <input
-                    className="search_input"
+                    className="search_input w-full max-w-md px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-accent"
                     type="text"
                     placeholder="Buscar..."
                     value={searchTerm}
                     onChange={handleSearchChange}
                 />
                 {suggestions.length > 0 && (
-                    <div className="autocomplete">
+                    <div className="autocomplete absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1 z-10">
                         {suggestions.map((suggestion, index) => (
                             <div
                                 key={index}
-                                className="autocomplete-item"
+                                className="autocomplete-item px-4 py-2 cursor-pointer hover:bg-gray-100"
                                 onClick={() => handleSuggestionClick(suggestion)}
                             >
                                 {suggestion}
