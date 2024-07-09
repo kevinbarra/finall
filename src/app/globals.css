@@ -4,7 +4,7 @@
 
 @layer components {
     .header {
-        @apply flex justify-between items-center py-4 px-6 bg-white shadow-md;
+        @apply flex justify-between items-center py-4 px-6 bg-white shadow-md border-b border-gray-200;
     }
 
     .header__logo {
@@ -12,7 +12,7 @@
     }
 
     .header__menu {
-        @apply flex-grow flex items-center;
+        @apply flex-grow flex items-center justify-start;
     }
 
     .header__search {
