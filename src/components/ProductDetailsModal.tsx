@@ -43,7 +43,7 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({product, onClo
                         <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400} className="rounded-md" />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h3>
+                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
                         <h3 className="text-xl font-bold text-red-500 mb-4">AGOTADO</h3>
                         <p className="mb-2">Talla: {product!.SizeEU}EU</p>
                     </div>
