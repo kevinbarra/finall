@@ -46,9 +46,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
     return (
         <div onClick={handleClick} className="product_card cursor-pointer">
-            <div className="relative">
-                <Image className="product_image" src={product.Image_URL} alt={product.Product_name} layout="responsive" width={350} height={250} />
-                <div className="absolute top-2 right-2 bg-black text-white text-xs px-2 py-1 rounded">{product.SizeEU}</div>
+            <div>
+                <Image className="w-[350px] h-[250px]" src={product.Image_URL} alt={product.Product_name} layout="responsive" width={350} height={250} />
             </div>
             <div className="product_info">
                 {stock(parseInt(product.Quantity))}
