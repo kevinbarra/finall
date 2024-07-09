@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import Image from 'next/image';
 
@@ -22,17 +22,17 @@ interface ProductDetailsModalProps {
 const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onClose }) => {
     if (!product) return null;
 
-    function stock(stock: number) {
-        if (stock > 0) {
+    const stock = (quantity: number) => {
+        if (quantity > 0) {
             return (
                 <div className="flex flex-col md:flex-row items-center md:items-start">
                     <div className="md:mr-8 mb-4 md:mb-0">
-                        <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400} className="rounded-md" />
+                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400} className="rounded-md" />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
-                        <p className="mb-2">Talla: {product!.SizeEU}EU</p>
-                        <p className="text-lg font-semibold">{product!.PriceSell} EUR</p>
+                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
+                        <p className="mb-2">Talla: {product.SizeEU}EU</p>
+                        <p className="text-lg font-semibold">{product.PriceSell} EUR</p>
                     </div>
                 </div>
             );
@@ -40,12 +40,12 @@ const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({ product, onCl
             return (
                 <div className="flex flex-col md:flex-row items-center md:items-start">
                     <div className="md:mr-8 mb-4 md:mb-0">
-                        <Image src={product!.Image_URL} alt={product!.Product_name} width={400} height={400} className="rounded-md" />
+                        <Image src={product.Image_URL} alt={product.Product_name} width={400} height={400} className="rounded-md" />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">{product!.Product_name}</h2>
+                        <h2 className="text-2xl font-bold mb-4">{product.Product_name}</h2>
                         <h3 className="text-xl font-bold text-red-500 mb-4">AGOTADO</h3>
-                        <p className="mb-2">Talla: {product!.SizeEU}EU</p>
+                        <p className="mb-2">Talla: {product.SizeEU}EU</p>
                     </div>
                 </div>
             );
