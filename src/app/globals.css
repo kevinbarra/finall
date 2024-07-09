@@ -16,11 +16,23 @@
     }
 
     .header__search {
-        @apply flex-grow flex justify-center;
+        @apply flex-grow flex justify-center relative;
     }
 
     .header__social {
         @apply flex-grow flex justify-end;
+    }
+
+    .search_input {
+        @apply w-full max-w-md px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-accent;
+    }
+
+    .autocomplete {
+        @apply absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1 z-10;
+    }
+
+    .autocomplete-item {
+        @apply px-4 py-2 cursor-pointer hover:bg-gray-100;
     }
 
     .product_card {
