@@ -24,7 +24,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
     const [categories, setCategories] = useState<Category[]>([]);
 
     useEffect(() => {
-        const loadBrands = async () => {
+        const loadCategories = async () => {
             try {
                 const response = await fetch('https://luxariazure.azurewebsites.net/categories');
                 if (!response.ok) {
@@ -37,7 +37,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
             }
         };
 
-        loadBrands();
+        loadCategories();
     }, []);
 
     return (
