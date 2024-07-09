@@ -1,23 +1,37 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import React from 'react';
 
-const inter = Inter({ subsets: ["latin"] });
+interface Product {
+  ID_product: string;
+  Product_name: string;
+  ID_Category: string;
+  PriceSell: string;
+  SizeEU: string;
+  Image_URL: string;
+  Revenue: string;
+  Color: string;
+  Quantity: string;
+}
 
-export const metadata: Metadata = {
-  title: "Luxaris",
+interface NewProductsProps {
+  products: Product[];
+  category: string;
+}
+
+const NewProducts: React.FC<NewProductsProps> = ({ products, category }) => {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <div key={product.ID_product} className="product_card">
+          <img src={product.Image_URL} alt={product.Product_name} className="product_image" />
+          <div className="product_info">
+            <h3 className="product_title">{product.Product_name}</h3>
+            <p className="product_price">{product.PriceSell} EUR</p>
+            {product.Quantity === "0" && <p className="product_sold_out">AGOTADO</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="es">
-      <body className={inter.className}>
-      {children}
-      </body>
-    </html>
-  );
-}
+export default NewProducts;
