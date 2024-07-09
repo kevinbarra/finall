@@ -13,6 +13,7 @@ function classNames(...classes: string[]) {
 
 interface HeaderMainProps {
     onCategorySelect: (categoryId: string, catName: string) => void;
+    onSearchChange: (searchTerm: string) => void;
 }
 
 interface Category {
@@ -20,8 +21,10 @@ interface Category {
     name: string;
 }
 
-const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
+const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect, onSearchChange }) => {
     const [categories, setCategories] = useState<Category[]>([]);
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const [suggestions, setSuggestions] = useState<string[]>([]);
 
     useEffect(() => {
         const loadBrands = async () => {
@@ -39,6 +42,24 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
 
         loadBrands();
     }, []);
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        setSearchTerm(value);
+        onSearchChange(value);
+
+        // Simular sugerencias basadas en el término de búsqueda
+        const exampleSuggestions = ['Versace', 'Nike', 'Adidas', 'Puma'];
+        setSuggestions(exampleSuggestions.filter(suggestion =>
+            suggestion.toLowerCase().includes(value.toLowerCase())
+        ));
+    };
+
+    const handleSuggestionClick = (suggestion: string) => {
+        setSearchTerm(suggestion);
+        onSearchChange(suggestion);
+        setSuggestions([]);
+    };
 
     return (
         <div className="header">
@@ -80,7 +101,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
                                             )}>
                                             {category.name}
                                         </button>
-                                    )}
+                                    ))}
                                 </Menu.Item>
                             ))}
                         </Menu.Items>
@@ -92,10 +113,25 @@ const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
             </div>
             <div className="header__search">
                 <input
-                    className="search_input w-96 px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-accent"
+                    className="search_input"
                     type="text"
                     placeholder="Buscar..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
                 />
+                {suggestions.length > 0 && (
+                    <div className="autocomplete">
+                        {suggestions.map((suggestion, index) => (
+                            <div
+                                key={index}
+                                className="autocomplete-item"
+                                onClick={() => handleSuggestionClick(suggestion)}
+                            >
+                                {suggestion}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
             <div className="header__social">
                 <a href="https://www.instagram.com/_luxaris_" className="text-gray-500 text-2xl hover:text-gray-700">
