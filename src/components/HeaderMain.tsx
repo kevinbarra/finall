@@ -1,73 +1,108 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+'use client';
 
-@layer components {
-    .header {
-        @apply flex justify-between items-center py-4 px-6 bg-white shadow-md;
-    }
+import React, { useState, useEffect, Fragment } from 'react';
+import Image from 'next/image';
+import { BsInstagram } from "react-icons/bs";
+import { Menu, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-    .header__logo {
-        @apply flex-grow text-center;
-    }
-
-    .header__menu {
-        @apply flex-grow flex items-center;
-    }
-
-    .header__search {
-        @apply flex-grow flex justify-center relative;
-    }
-
-    .header__social {
-        @apply flex-grow flex justify-end;
-    }
-
-    .search_input {
-        @apply w-full max-w-md px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-accent;
-    }
-
-    .autocomplete {
-        @apply absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1 z-10;
-    }
-
-    .autocomplete-item {
-        @apply px-4 py-2 cursor-pointer hover:bg-gray-100;
-    }
-
-    .product_card {
-        @apply bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105;
-    }
-
-    .product_image {
-        @apply w-full h-48 object-cover;
-    }
-
-    .product_info {
-        @apply p-4 text-center;
-    }
-
-    .product_title {
-        @apply text-lg font-semibold mb-2;
-    }
-
-    .product_price {
-        @apply text-accent font-bold;
-    }
-
-    .product_sold_out {
-        @apply text-red-600 font-bold;
-    }
-
-    .modal {
-        @apply fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-50 flex items-center justify-center px-4;
-    }
-
-    .modal_content {
-        @apply bg-white p-6 rounded-md shadow-lg w-full max-w-2xl;
-    }
-
-    .modal_close {
-        @apply mt-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 transition-colors;
-    }
+function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(' ');
 }
+
+interface HeaderMainProps {
+    onCategorySelect: (categoryId: string, catName: string) => void;
+}
+
+interface Category {
+    ID_Category: string;
+    name: string;
+}
+
+const HeaderMain: React.FC<HeaderMainProps> = ({ onCategorySelect }) => {
+    const [categories, setCategories] = useState<Category[]>([]);
+
+    useEffect(() => {
+        const loadCategories = async () => {
+            try {
+                const response = await fetch('https://luxariazure.azurewebsites.net/categories');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data: Category[] = await response.json();
+                setCategories(data);
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        };
+
+        loadCategories();
+    }, []);
+
+    return (
+        <div className="header">
+            <div className="header__menu">
+                <Menu as="div" className="relative inline-block text-left">
+                    <Menu.Button className="inline-flex justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none">
+                        Categorías
+                        <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-500" aria-hidden="true" />
+                    </Menu.Button>
+                    <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95">
+                        <Menu.Items className="absolute left-0 mt-2 w-56 origin-top-left bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button
+                                        onClick={() => onCategorySelect("ALL", "ALL")}
+                                        className={classNames(
+                                            active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                            'block px-4 py-2 text-sm'
+                                        )}>
+                                        ALL
+                                    </button>
+                                )}
+                            </Menu.Item>
+                            {categories.map((category) => (
+                                <Menu.Item key={category.ID_Category}>
+                                    {({ active }) => (
+                                        <button
+                                            onClick={() => onCategorySelect(category.ID_Category, category.name)}
+                                            className={classNames(
+                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                                                'block px-4 py-2 text-sm'
+                                            )}>
+                                            {category.name}
+                                        </button>
+                                    ))}
+                                </Menu.Item>
+                            ))}
+                        </Menu.Items>
+                    </Transition>
+                </Menu>
+            </div>
+            <div className="header__logo">
+                <Image src="/images/luxaris.png" alt="logo luxaris" width={192} height={48} />
+            </div>
+            <div className="header__search relative">
+                <input
+                    className="search_input w-full max-w-md px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-accent"
+                    type="text"
+                    placeholder="Buscar..."
+                />
+            </div>
+            <div className="header__social">
+                <a href="https://www.instagram.com/_luxaris_" className="text-gray-500 text-2xl hover:text-gray-700">
+                    <BsInstagram />
+                </a>
+            </div>
+        </div>
+    );
+};
+
+export default HeaderMain;
