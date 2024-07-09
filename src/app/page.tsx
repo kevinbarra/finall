@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState, useEffect } from 'react';
 import NewProducts from '@/components/NewProducts';
 import HeaderMain from '@/components/HeaderMain';
@@ -66,4 +67,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home
+export default Home;
